@@ -1,0 +1,60 @@
+{
+  "name": "final-select",
+  "version": "0.0.1",
+  "description": "The final select I'll hopefully ever need to make",
+  "main": "index.js",
+  "author": "Robert Inglin",
+  "license": "MIT",
+  "scripts": {
+    "test:coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text",
+    "test:unit": "babel-node specs/_run.js",
+    "test": "npm run test:coverage npm run test:unit",
+    "babel": "browserify source/mount.js -o dist/bundle.js -t babelify -g [ uglifyify --no-sourcemap]",
+    "serve": "node index.js",
+    "rollup": "rollup --config",
+    "watch": "watch \"**/*.js\" -c \"npm run babel\""
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-object-rest-spread",
+      "transform-class-properties"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
+  "nyc": {
+    "include": [
+      "specs/**/*.js"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-plugin-istanbul": "^1.0.3",
+    "babel-plugin-transform-class-properties": "^6.10.2",
+    "babel-plugin-transform-es2015-modules-systemjs": "^6.9.0",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "babel-register": "^6.9.0",
+    "browserify": "^13.0.1",
+    "cross-env": "^2.0.0",
+    "jasmine": "^2.4.1",
+    "jasmine-console-reporter": "^1.2.6",
+    "nyc": "^7.0.0",
+    "rollup": "^0.34.3",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "uglifyify": "^3.0.2",
+    "watch-cli": "^0.2.1"
+  }
+}
