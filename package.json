@@ -2,7 +2,7 @@
   "name": "final-select",
   "version": "0.0.1",
   "description": "The final select I'll hopefully ever need to make",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "author": "Robert Inglin",
   "license": "MIT",
   "repository" : {
