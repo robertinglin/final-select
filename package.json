@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "Robert Inglin",
   "license": "MIT",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/robertinglin/final-select.git"
+  },
   "scripts": {
     "test:coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text",
     "test:unit": "babel-node specs/_run.js",
