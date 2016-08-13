@@ -156,6 +156,8 @@ export default class FinalSelect extends Renderable {
         z-index: ${this.maxZindex};
         position: absolute;
         top: 100%;
+        left: 0;
+        right: 0;
       `: '',
       onChange: (e) => {
         if (!this.state.isOpen) {
@@ -191,9 +193,10 @@ export default class FinalSelect extends Renderable {
   }
 
   render() {
-    return super.render({
+    let root = {
       type: 'label',
       style: 'position: relative',
+      'data-final-select': 'true',
       children: [
         ...this.renderBackgroundCurtain(),
         ...this.renderLabelText(),
@@ -213,7 +216,11 @@ export default class FinalSelect extends Renderable {
         }
       },
       key: 'hello world'
-    });
+    };
+    if (this.state.isOpen) {
+      root['data-final-select-open'] = 'true';
+    }
+    return super.render(root);
   }
 
   postRender() {

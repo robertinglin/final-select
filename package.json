@@ -5,18 +5,18 @@
   "main": "dist/bundle.js",
   "author": "Robert Inglin",
   "license": "MIT",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/robertinglin/final-select.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robertinglin/final-select.git"
   },
   "scripts": {
     "test:coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text",
     "test:unit": "babel-node specs/_run.js",
     "test": "npm run test:coverage npm run test:unit",
-    "babel": "browserify source/mount.js -o dist/bundle.js -t babelify -g [ uglifyify --no-sourcemap]",
-    "serve": "node index.js",
-    "rollup": "rollup --config",
-    "watch": "watch \"**/*.js\" -c \"npm run babel\""
+    "babel": "browserify source/mount.js -o dist/final-select.js -t babelify -g [ uglifyify --no-sourcemap ]",
+    "css": "copyfiles source/final-select.css dist/ -u",
+    "watch": "watch \"source/**/*.js\" -c \"npm run babel\"",
+    "build": "npm run css & npm run babel"
   },
   "babel": {
     "presets": [
@@ -60,5 +60,8 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "uglifyify": "^3.0.2",
     "watch-cli": "^0.2.1"
+  },
+  "dependencies": {
+    "copyfiles": "^1.0.0"
   }
 }
